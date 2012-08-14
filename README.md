@@ -34,4 +34,7 @@ $ ./configure --prefix=<path to install> --with-tcl=<tcl-directory> --with-tk=<t
 $ make
 $ make install
 
+Disclaimer
+----------
 
+Any references to Simply Fortran from Approximatrix are for marketing only.  Simply Fortran is a trademark of Approximatrix, LLC.
