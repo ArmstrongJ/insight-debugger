@@ -1,0 +1,86 @@
+2012-04-19  Keith Seitz  <keiths@redhat.com>
+
+	From Patrick Monnerat  <pm@datasphere.ch>:
+	* generic/gdbtk-hooks.c (gdbtk_annotate_signal): Avoid
+	dereferencing a null (i.e.: dead) process/thread.
+
+2012-04-19  Roland Schwingel  <roland.schwingel@onevision.com>
+
+	* generic/gdbtk-bp.c: Updated copyright.
+	(gdb_find_bp_at_line): Don't access location struct
+	of breakpoint if it is NULL. 
+
+2012-04-13  Pierre Muller  <muller@ics.u-strasbg.fr>
+
+	* generic/gdbtk-register.c (get_register_types): Use
+	host_address_to_string function to avoid use of "%lx" and
+	typecasts.
+
+2012-03-30  Pierre Muller  <muller@ics.u-strasbg.fr>
+
+	* generic/gdbtk.h (close_bfds): Fix prototype.
+
+2012-03-30  Roland Schwingel  <roland.schwingel@onevision.com>
+
+	* library/globalpref.itb: Updated Copyright to 1997-2012 Red Hat, Inc.
+	(_build_win): Remove unneeded debug call. Fix packing of 
+	OK/Apply/Cancel buttons for newer tk versions. Small reformatting.
+
+2012-03-30  Roland Schwingel  <roland.schwingel@onevision.com>
+
+	* generic/gdbtk-register.c: Updated Copyright year to 2001-2012.
+	(get_register_types): Cast result of TYPE_FIELD_TYPE to size_t 
+	instead of long.
+	(gdb_regformat): on windows 64bit use strtoll instead of strtol.
+	* generic/gdbtk-stack.c: Updated Copyright year to 2001-2012.
+	(gdb_get_vars_command): Don't cast clientData to long. Here 
+	checking of non NULL clientData is enough.
+
+2012-03-30  Roland Schwingel  <roland.schwingel@onevision.com>
+
+	* generic/gdbtk-cmds.c: Updated Copyright year to 1994-2012.
+	Remove unneeded include.
+
+2012-03-30  Roland Schwingel  <roland.schwingel@onevision.com>
+
+	* generic/gdbtk.c: Updated Copyright year to 1994-2012.
+	(gdbtk_init): Move call to ide_create_shell_execute_command
+	to generic windows section.
+
+2012-03-28  Roland Schwingel  <roland.schwingel@onevision.com>
+
+	* generic/gdbtk.c (gdbtk_init,tk_command): Replace deprecated access
+	to tcl interpreter result string with Tcl_GetStringResult().
+	* generic/gdbtk-hooks.c (gdbtk_read,gdbtk_readline,gdbtk_load_hash)
+	(gdbtk_query): Likewise. 
+	(gdbtk_read): Simplified error handling in case "gdbtk_console_read"
+	fails. Some reformatting.
+
+2012-03-14  Roland Schwingel  <roland.schwingel@onevision.com>
+
+	* generic/gdbtk-bp.c (gdb_set_bp): Adjust parameters
+	of create_breakpoint() to match recent change.
+
+2012-03-10  Keith Seitz  <keiths@redhat.com>
+
+	* generic/gdbtk-interp.c (_initialize_gdbtk_interp): Add
+	missing prototype to appease -Wmissing-prototypes.
+
+2012-02-28  Kevin Buettner  <kevinb@redhat.com>
+
+	* generic/gdbtk-cmds.h (pc_function_name): Make return type
+	const.
+	* generic/gdbtk-bp.c (gdb_get_breakpoint_info)
+	(gdb_get_tracepoint_info): Make char * variables const to match
+	recent GDB API changes.
+	* generic/gdbtk-stack.c (get_frame_name): Likewise.
+	* generic/gdbtk-cmds.c (gdb_get_function_command, gdb_listfuncs)
+	(gdb_loc, perror_with_name_wrapper): Likewise.
+	(pc_function_name): Likewise, plus change return type to be const.
+
+2012-02-28  Keith Seitz  <keiths@redhat.com>
+
+	From Jeffrey Armstrong  <jeffrey.armstrong@approximatrix.com>:
+	* library/srctextwin.itb (lookup_line): Quote the filename
+	to gdb_set_bp.
+
