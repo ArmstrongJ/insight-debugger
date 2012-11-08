@@ -35,7 +35,6 @@ itcl::class SrcWin {
     method fillNameCB {}
     method fillFuncCB {name}
     method goto_func {w {val ""}}
-    method filter_files {w {val ""}}
     method location {tag linespec}
     method mode {w new_mode {go 1}}
     method no_inferior {}
@@ -76,6 +75,8 @@ itcl::class SrcWin {
     method _update {loc}
     method get_top {}
     method _set_tag_to_stack {}
+    method set_file_filter {val}
+    method filter_files {w {val ""}}
     proc _choose_window {file}
     variable _statbar
     variable _filefilter

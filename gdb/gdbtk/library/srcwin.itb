@@ -175,9 +175,10 @@ itcl::body SrcWin::_build_win {} {
 
   $_statbar.mode entryset [$twin mode_get]
 
-  $_statbar.filter entryset "All Files"
-  set _filefilter ""
-
+  #set _filefilter ""
+  $_statbar.filter entryset "[pref get gdb/src/filefilter]"
+  set_file_filter "[pref get gdb/src/filefilter]"
+  
   # time to load the widget with a file.
   # If this is a new widget and the program is
   # not yet being debugged, load the file with "main" in it.
@@ -366,9 +367,9 @@ itcl::body SrcWin::goto_func {w {val ""}} {
 }
 
 # ------------------------------------------------------------------
-#  PRIVATE PUBLIC METHOD:  filter_files - function combobox callback
+#  PRIVATE METHOD:  set_file_filter - updates the file filter
 # ------------------------------------------------------------------
-itcl::body SrcWin::filter_files {w {val ""}} {
+itcl::body SrcWin::set_file_filter {val} {
   
   if {$val != ""} {
     if {$val == "Fortran"} {
@@ -378,7 +379,21 @@ itcl::body SrcWin::filter_files {w {val ""}} {
     } else {
       set _filefilter ""
     }
-        
+    
+    pref setd gdb/src/filefilter "$val"
+  } else {
+    set _filefilter ""
+  }
+}
+
+# ------------------------------------------------------------------
+#  PRIVATE METHOD:  filter_files - file filter combobox callback
+# ------------------------------------------------------------------
+itcl::body SrcWin::filter_files {w {val ""}} {
+  
+  if {$val != ""} {
+    set_file_filter "$val"
+
     $_statbar.name list delete 0 end
     fillNameCB 
   }
